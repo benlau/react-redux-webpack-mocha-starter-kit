@@ -19,10 +19,11 @@ Features
 
 Commands
 
- 1. npm run preview
+ 1. npm run preview #Run `webpack-dev-server` on localhost:8080. Hot reload is supported
  2. npm run dist #Build release package
- 3. npm run tests
- 4. npm run tests:watch
+ 3. npm run tests #Run test cases
+ 4. npm run tests:watch #Watch file changes then run test cases
 
-Based on this tutorial:
+
+This starter project is based on a tutorial with customization from:
 http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html#client-project-setup
