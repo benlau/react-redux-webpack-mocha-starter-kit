@@ -6,7 +6,7 @@
   "scripts": {
     "tests": "NODE_PATH=$NODE_PATH:$PWD/src mocha --compilers js:babel-core/register --recursive --require ./tests/test_helper.js \"tests/**/*@(.js|.jsx)\"",
     "tests:watch": "npm run tests -- --watch",
-    "preview": "webpack-dev-server",
+    "start": "webpack-dev-server",
     "dist": "webpack --release"
   },
   "keywords": [],
