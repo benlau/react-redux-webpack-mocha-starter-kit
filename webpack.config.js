@@ -3,10 +3,16 @@ var autoprefixer = require("autoprefixer");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
 var argv = require("minimist")(process.argv.slice(2));
 
+const DEBUG = !argv.release;
+
 var config = {
-  entry: [
+  entry: [].concat(DEBUG ? [
+    "webpack-dev-server/client?http://localhost:8080",
+    "webpack/hot/only-dev-server"
+  ] : []).concat([
     "./src/index.jsx"
-  ],
+  ]),
+  devtool: DEBUG ? "source-map" : false,
   module: {
     preLoaders: [
       {
@@ -49,22 +55,12 @@ var config = {
       {
         from: "static"}
     ])
-  ],
+  ].concat(DEBUG ? [] : [
+    new webpack.optimize.UglifyJsPlugin()
+  ]),
   postcss: function () {
     return [autoprefixer];
   }
 };
-
-if (!argv.release) {
-  config.devtool = "source-map";
-  config.entry.unshift(
-    "webpack-dev-server/client?http://localhost:8080",
-    "webpack/hot/only-dev-server"
-  );
-  config.output.path = __dirname + "/build";
-  console.log(config.output.path);
-} else {
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
-}
 
 module.exports = config;

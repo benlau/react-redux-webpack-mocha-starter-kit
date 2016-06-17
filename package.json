@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tests": "NODE_PATH=$NODE_PATH:$PWD/src mocha --compilers js:babel-core/register --recursive --require ./tests/test_helper.js \"tests/**/*@(.js|.jsx)\"",
-    "tests:watch": "npm run tests -- --watch",
+    "test": "NODE_PATH=$NODE_PATH:$PWD/src mocha --compilers js:babel-core/register --recursive --require ./tests/test_helper.js \"tests/**/*@(.js|.jsx)\"",
+    "test:watch": "npm run tests -- --watch",
     "start": "webpack-dev-server",
     "dist": "webpack --release"
   },
